@@ -1,0 +1,75 @@
+Day 2 :-
+
+Stored Procedure : A Stored Procedure is a set of SQL commands that you save in the database to do a specific task. Instead of writing the same SQL code again and again, you write it once as a stored procedure and just call it when needed.(A Stored Procedure is a saved collection of SQL statements that can be reused to perform tasks like inserting, updating, or retrieving data.
+It helps make database operations faster, more organized, and easier to manage.)
+
+Sql Code :-
+
+create database Stored_Procedure;
+use Stored_Procedure;
+create table info(ID int, city varchar(100),statee varchar(100), pincode int);
+
+insert into info(ID,city,statee,pincode)values(5,'bhuldhana','maharashtra',423056);
+
+
+create procedure records
+as
+select * from info
+go;
+exec records;
+
+insert procedure :-
+
+CREATE PROCEDURE insert1
+    @ID INT,
+    @City VARCHAR(100),
+    @Statee VARCHAR(100),
+    @Pincode INT
+AS
+BEGIN
+    INSERT INTO info (ID, city, statee, pincode)
+    VALUES (@ID, @City, @Statee, @Pincode);
+END;
+EXEC insert1 @ID = 3, @City = 'Sillod', @Statee = 'Maharashtra', @Pincode = 431001;
+
+update procedure :-
+
+CREATE PROCEDURE update1
+    @ID INT,
+    @City VARCHAR(100),
+    @Statee VARCHAR(100),
+    @Pincode INT
+AS
+BEGIN
+    UPDATE info
+    SET city = @City,
+        statee = @Statee,
+        pincode = @Pincode
+    WHERE ID = @ID;
+END;
+EXEC update1 @ID = 1, @City = 'Ahmedabad', @Statee = 'Gujarat', @Pincode = 380001;
+
+delete procedure :-
+
+CREATE PROCEDURE delete1
+    @ID INT
+AS
+BEGIN
+    DELETE FROM info WHERE ID = @ID;
+END;
+EXEC delete1 @ID = 5;
+
+search procedure :-
+
+CREATE PROCEDURE search1
+    @ID INT
+AS
+BEGIN
+    SELECT * FROM info WHERE ID = @ID;
+END;
+EXEC search1 @ID = 1;
+
+
+
+
+

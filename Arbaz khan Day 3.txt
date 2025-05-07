@@ -1,0 +1,74 @@
+Day 3 :-
+
+sql codes :-
+
+use Stored_Procedure;
+
+
+alter table info
+add parceldate date;
+
+drop procedure update1;
+
+CREATE PROCEDURE update1
+    @ID INT,
+    @City VARCHAR(100),
+    @Statee VARCHAR(100),
+    @Pincode INT,
+    @customer VARCHAR(100),
+    @mobileno VARCHAR(100),
+    @mail VARCHAR(100),
+    @parceldate DATE
+AS
+BEGIN
+    UPDATE info
+    SET city = @City,
+        statee = @Statee,
+        pincode = @Pincode,
+        customer = @customer,
+        mobileno = @mobileno,
+        mail = @mail,
+        parceldate = @parceldate
+    WHERE ID = @ID;
+END;
+
+EXEC update1 @ID = 1, @City = 'pune', @Statee = 'maharashtra', @Pincode = 546123, @customer = 'arbaz', @mobileno = '8055737359',@mail='arbaz@gmail.com',@parceldate='08/26/2025';
+
+exec records
+
+drop procedure insert1;
+
+CREATE PROCEDURE insert1
+    @ID INT,
+    @City VARCHAR(100),
+    @Statee VARCHAR(100),
+    @Pincode INT,
+	@customer VARCHAR(100),
+	@mobileno VARCHAR(100),
+	@mail VARCHAR(100),
+	@parceldate VARCHAR(100)
+AS
+BEGIN
+    INSERT INTO info (ID, city, statee, pincode, customer, mobileno, mail, parceldate)
+    VALUES (@ID, @City, @Statee, @Pincode, @customer, @mobileno, @mail, @parceldate);
+END;
+
+EXEC insert1 @ID = 1, @City = 'goa', @Statee = 'goa', @Pincode = 431001, @customer = 'arbaz', @mobileno = '8055737359', @mail = 'arbaz@gmail.com', @parceldate = '08/30/2025';
+
+CREATE PROCEDURE delete1
+    @ID INT
+AS
+BEGIN
+    DELETE FROM info WHERE ID = @ID;
+END;
+
+EXEC delete1 @ID = 1;
+
+Output :-
+
+1	pune	maharashtra	546123	arbaz	8055737359	arbaz@gmail.com	2025-08-26
+2	jalna	maharashtra	431001	saad	84646513	saad@gmail.com	2025-09-05
+3	mumbai	maharashtra	421001	saquib	8465646513	saquib@gmail.com	2025-09-15
+4	sillod	maharashtra	423001	farhan	98784651	farhan@gmail.com	2025-06-25
+5	bhuldhana	maharashtra	423056	saeed	89785465	saeed@gmail.com	2025-08-26
+6	goa	goa	431001	anas	4645465460	anas@gmail.com	2025-08-14

@@ -1,0 +1,15 @@
+Day 1 :- 
+
+Primary Key : A primary key is a column in a table that uniquely identifies each row in that table. It must contain unique and non-null values.(Ensures each record in a table is unique.)
+
+Foreign Key : A Foreign key is a column in one table that refers to the Primary key in another table. It build a relationship between two tables.(Links two tables together, establishing a relationship between them.)
+
+sql code :-
+
+create database PKandFK;
+use PKandFK;
+create table student(studentID int,studentname varchar(50),age int,PRIMARY KEY(studentID));
+create table teacher(teacherID int,teachername varchar(50),age int,studentID varchar(50),PRIMARY KEY(teacherID)teacherID INT,FOREIGN KEY (teacherID) REFERENCES student (studentID),FOREIGN KEY (teacherID) REFERENCES teacher (teacherID));
+insert into teacher(teacherID,teachername,age,studentID) values(3,'awez sir',28,3);
+select * from student;
+select * from teacher;
